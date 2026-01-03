@@ -7,7 +7,7 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let question = [
+let questions = [
     {
         question: "inside which HTML element do we put the javascript ??",
         choice1: "<script>",
@@ -35,4 +35,28 @@ let question = [
 ];
 
 
+// consistents
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 3;
 
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    console.log(availableQuestions);
+    getNewQuestion();
+};
+
+getNewQuestion = () => {
+    questionCounter++;
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currenntQuestion = availableQuestions[questionIndex];
+    question.innerText = currenntQuestion.question;
+
+    choice.forEach( choice => {
+        const number = choice.dataset['number'];
+        choice.innerText = currenntQuestion['choice' + number];
+    });
+};
+
+startGame();
