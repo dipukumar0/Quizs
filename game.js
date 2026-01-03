@@ -1,5 +1,7 @@
 const question = document.getElementById("question");
 const choice =Array.from(document.getElementsByClassName("choice-text"));
+const questionCounterText = document.getElementById("questionCounter");
+const scoreText = document.getElementById("score");
 
 let currenntQuestion = {};
 let acceptingAnswer = true;
@@ -63,7 +65,6 @@ getNewQuestion = () => {
     });
 
     availableQuestions.splice(questionIndex, 1);
-
     acceptingAnswer = true;
 };
 
@@ -75,7 +76,15 @@ choice.forEach( choice => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
+        const classToApply =
+            selectedAnswer == currenntQuestion.answer ? "correct" : "incorrect"
+        
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout( () => {
+        selectedChoice.parentElement.classList.remove(classToApply);
         getNewQuestion();
+        }, 1000);
     });
 });
 
