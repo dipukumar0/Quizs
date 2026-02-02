@@ -15,7 +15,7 @@ username.addEventListener("keyup", () => {
 
 saveHighScore = e => {
     console.log("clicked the save button");
-    e.preventDefault();
+    e.preventDefault();``
 
     const score = {
         score: Math.floor(Math.random() * 100),
