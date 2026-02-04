@@ -19,7 +19,11 @@ fetch("questions.json")
     console.log(loadedQuestions);
     questions = loadedQuestions;
     startGame();
+})
+.catch( err => {
+    console.error(err);
 });
+
 
 // constants
 const CORRECT_BONUS = 10;
